@@ -1,14 +1,16 @@
 package com.github.apiprodutosspring.model;
 
+import jakarta.persistence.Entity;
 import lombok.Data;
-import org.springframework.boot.persistence.autoconfigure.EntityScan;
+import lombok.ToString;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Column;
 
 import java.math.BigDecimal;
 
-@EntityScan
+@Entity
 @Data
+@ToString
 public class Produto {
 
     @Id
