@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project version="4">
-  <component name="DataSourcePerFileMappings">
-    <file url="file://$APPLICATION_CONFIG_DIR$/consoles/db/f0d21587-d63e-45a3-b649-83b517ae1384/console.sql" value="f0d21587-d63e-45a3-b649-83b517ae1384" />
-    <file url="file://$PROJECT_DIR$/apiprodutosspring/src/main/resources/data.sql" value="f0d21587-d63e-45a3-b649-83b517ae1384" />
-  </component>
-</project>
