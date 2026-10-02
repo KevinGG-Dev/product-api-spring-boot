@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: apiprodutosspring
+  datasource:
+    h2:
+      url:
+
