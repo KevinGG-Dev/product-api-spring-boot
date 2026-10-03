@@ -2,6 +2,7 @@ package com.github.apiprodutosspring.controller;
 
 import com.github.apiprodutosspring.model.Produto;
 import com.github.apiprodutosspring.repository.ProdutoRepository;
+import org.jspecify.annotations.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -47,6 +48,12 @@ public class ProdutoController {
         Produto produtoParaDeletar = produtoRepository.findById(id).get();
         produtoRepository.delete(produtoParaDeletar);
         return "Produto: " + produtoParaDeletar.toString() + " deletado com sucesso";
+    }
+
+    @PutMapping
+    public void atualizarProduto(@RequestParam String id, @RequestBody @NonNull Produto produto){
+        produto.setId(id);
+        produtoRepository.save(produto);
     }
 
 }
