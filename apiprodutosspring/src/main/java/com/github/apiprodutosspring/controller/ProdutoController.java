@@ -41,4 +41,12 @@ public class ProdutoController {
         Optional<Produto> produto = produtoRepository.findById(id);
         return produto.isPresent() ? produto.get() : null;
     }
+
+    @DeleteMapping
+    public String deletarProdutoPorId(@RequestParam ("id") String id){
+        Produto produtoParaDeletar = produtoRepository.findById(id).get();
+        produtoRepository.delete(produtoParaDeletar);
+        return "Produto: " + produtoParaDeletar.toString() + " deletado com sucesso";
+    }
+
 }
