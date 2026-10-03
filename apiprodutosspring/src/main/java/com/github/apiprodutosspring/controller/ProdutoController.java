@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @RestController
@@ -33,5 +34,11 @@ public class ProdutoController {
         } catch (Exception ex) {
             System.out.println("Erro ao salvar produto: " + ex.getMessage());
         }
+    }
+
+    @GetMapping ("/{id}")
+    public Produto infoProdutoPorId(@PathVariable String id){
+        Optional<Produto> produto = produtoRepository.findById(id);
+        return produto.isPresent() ? produto.get() : null;
     }
 }

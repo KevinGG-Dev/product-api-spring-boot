@@ -1,9 +1,10 @@
 package com.github.apiprodutosspring.model;
 
+import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import lombok.Data;
 import lombok.ToString;
-import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Column;
 
 import java.math.BigDecimal;
@@ -13,8 +14,9 @@ import java.math.BigDecimal;
 @ToString
 public class Produto {
 
-    @Id
+
     @Column
+    @Id
     private String id;
 
     @Column
