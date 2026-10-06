@@ -1,15 +1,14 @@
-package com.github.apiprodutosspring.controller;
+package com.github.apiprodutosspring.serviceTest;
 
 import com.github.apiprodutosspring.model.Produto;
 import com.github.apiprodutosspring.repository.ProdutoRepository;
+import com.github.apiprodutosspring.service.ProdutoService;
 import org.jspecify.annotations.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 
-import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 
 @RestController
 @RequestMapping (value = "/produtos")
@@ -22,13 +21,16 @@ public class ProdutoController {
         this.produtoRepository = produtoRepository;
     }
 
+    @Autowired
+    ProdutoService produtoService;
+
     public ProdutoController() {
     }
 
     @PostMapping
     public void salvarProduto(@RequestBody Produto produto){
         try {
-
+            produtoService.salvarProduto(produto);
             System.out.println("Produto: " + produto.toString() + " salvo com sucesso");
         } catch (Exception ex) {
             System.out.println("Erro ao salvar produto: " + ex.getMessage());
