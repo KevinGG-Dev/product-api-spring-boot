@@ -4,13 +4,14 @@ import com.github.apiprodutosspring.model.Produto;
 import com.github.apiprodutosspring.service.ProdutoService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.TestComponent;
 
 import java.math.BigDecimal;
 import java.util.UUID;
 
-@TestComponent
-public class ProdutoControllerTest {
+@SpringBootTest
+public class ProdutoServiceTest {
 
     @Autowired
     ProdutoService produtoService;
