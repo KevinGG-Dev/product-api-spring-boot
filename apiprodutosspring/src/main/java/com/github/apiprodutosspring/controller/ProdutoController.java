@@ -28,9 +28,7 @@ public class ProdutoController {
     @PostMapping
     public void salvarProduto(@RequestBody Produto produto){
         try {
-            String id = UUID.randomUUID().toString();
-            produto.setId(id);
-            produtoRepository.save(produto);
+
             System.out.println("Produto: " + produto.toString() + " salvo com sucesso");
         } catch (Exception ex) {
             System.out.println("Erro ao salvar produto: " + ex.getMessage());
