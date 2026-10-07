@@ -18,7 +18,7 @@ public class ProdutoService {
         this.produtoRepository = produtoRepository;
     }
 
-    public void salvarProduto(Produto produto){
+    public void salvarProduto(@RequestBody Produto produto){
        try {
            String id = UUID.randomUUID().toString();
            produto.setId(id);
