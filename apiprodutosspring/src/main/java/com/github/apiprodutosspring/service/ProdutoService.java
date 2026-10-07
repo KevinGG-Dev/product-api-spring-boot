@@ -2,6 +2,7 @@ package com.github.apiprodutosspring.service;
 
 import com.github.apiprodutosspring.model.Produto;
 import com.github.apiprodutosspring.repository.ProdutoRepository;
+import org.jspecify.annotations.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,13 +19,11 @@ public class ProdutoService {
         this.produtoRepository = produtoRepository;
     }
 
-    public void salvarProduto(@RequestBody Produto produto){
-       try {
+    public void salvarProduto(@NonNull Produto produto){
+
            String id = UUID.randomUUID().toString();
            produto.setId(id);
            produtoRepository.save(produto);
-       } catch (Exception ex) {
-       System.out.println("Erro: " + ex.getMessage() + " ao tentar salvar o produto.");
-       }
+
     }
 }
