@@ -1,4 +1,5 @@
 package com.github.apiprodutosspring.controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import com.github.apiprodutosspring.model.Produto;
 import com.github.apiprodutosspring.repository.ProdutoRepository;
@@ -12,6 +13,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping (value = "/produtos")
 public class ProdutoController {
