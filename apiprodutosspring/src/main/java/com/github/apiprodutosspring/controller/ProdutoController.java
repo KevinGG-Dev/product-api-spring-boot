@@ -43,8 +43,7 @@ public class ProdutoController {
 
     @GetMapping
     public List<Produto> listarProdutos(){
-        List<Produto> produtosListados = produtoService.listarProdutos();
-        return produtosListados;
+        return produtoService.listarProdutos();
     }
 
     @GetMapping ("/{id}")

@@ -29,6 +29,8 @@ public class ProdutoService {
     }
 
     public List<Produto> listarProdutos(){
-        return produtoRepository.findAll();
+        List<Produto> produtos = produtoRepository.findAll();
+        System.out.println(produtos.toString());
+        return produtos;
     }
 }
