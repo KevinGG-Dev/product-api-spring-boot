@@ -40,4 +40,10 @@ public class ProdutoService {
         Optional<Produto> produto = produtoRepository.findById(id);
         return produto.isPresent() ? produto.get() : null;
     }
+
+    public String excluirProduto(String id){
+        Produto produtoParaExcluir = produtoRepository.findById(id).get();
+        produtoRepository.delete(produtoParaExcluir);
+        return "Produto " + produtoParaExcluir.toString() + " removido com sucesso";
+    }
 }

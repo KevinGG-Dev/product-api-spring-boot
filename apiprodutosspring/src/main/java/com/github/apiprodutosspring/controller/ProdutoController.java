@@ -1,4 +1,5 @@
 package com.github.apiprodutosspring.controller;
+import org.apache.coyote.Response;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -52,10 +53,9 @@ public class ProdutoController {
     }
 
     @DeleteMapping
-    public String deletarProdutoPorId(@RequestParam ("id") String id){
-        Produto produtoParaDeletar = produtoRepository.findById(id).get();
-        produtoRepository.delete(produtoParaDeletar);
-        return "Produto: " + produtoParaDeletar.toString() + " deletado com sucesso";
+    public ResponseEntity deletarProdutoPorId(@RequestParam ("id") String id){
+        String produtoParaDeletar = produtoService.excluirProduto(id);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 
     @PutMapping
