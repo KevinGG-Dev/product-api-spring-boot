@@ -39,6 +39,12 @@ public class ProdutoController {
         }
     }
 
+    @GetMapping
+    public List<Produto> listarProdutos(){
+        List<Produto> produtosListados = produtoService.listarProdutos();
+        return produtosListados;
+    }
+
     @GetMapping ("/{id}")
     public Produto infoProdutoPorId(@PathVariable String id){
         Optional<Produto> produto = produtoRepository.findById(id);

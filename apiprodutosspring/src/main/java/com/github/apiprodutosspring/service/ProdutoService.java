@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -25,5 +26,9 @@ public class ProdutoService {
            produto.setId(id);
            produtoRepository.save(produto);
 
+    }
+
+    public List<Produto> listarProdutos(){
+        return produtoRepository.findAll();
     }
 }
