@@ -2,6 +2,7 @@ package com.github.apiprodutosspring.controller;
 
 import com.github.apiprodutosspring.model.Produto;
 import com.github.apiprodutosspring.repository.ProdutoRepository;
+import com.github.apiprodutosspring.service.ProdutoService;
 import org.jspecify.annotations.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -18,6 +19,9 @@ public class ProdutoController {
     @Autowired
     private ProdutoRepository produtoRepository;
 
+    @Autowired
+    private ProdutoService produtoService;
+
     public ProdutoController(ProdutoRepository produtoRepository) {
         this.produtoRepository = produtoRepository;
     }
@@ -28,7 +32,7 @@ public class ProdutoController {
     @PostMapping
     public void salvarProduto(@RequestBody Produto produto){
         try {
-
+            produtoService.salvarProduto(produto);
             System.out.println("Produto: " + produto.toString() + " salvo com sucesso");
         } catch (Exception ex) {
             System.out.println("Erro ao salvar produto: " + ex.getMessage());
