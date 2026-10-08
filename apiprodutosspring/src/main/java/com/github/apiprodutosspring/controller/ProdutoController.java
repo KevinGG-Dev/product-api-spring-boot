@@ -1,4 +1,6 @@
 package com.github.apiprodutosspring.controller;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
 import com.github.apiprodutosspring.model.Produto;
@@ -32,13 +34,10 @@ public class ProdutoController {
     }
 
     @PostMapping
-    public void salvarProduto(@RequestBody Produto produto){
-        try {
+    public ResponseEntity salvarProduto(@RequestBody Produto produto){
             produtoService.salvarProduto(produto);
             System.out.println("Produto: " + produto.toString() + " salvo com sucesso");
-        } catch (Exception ex) {
-            System.out.println("Erro ao salvar produto: " + ex.getMessage());
-        }
+            return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
     @GetMapping
@@ -47,9 +46,9 @@ public class ProdutoController {
     }
 
     @GetMapping ("/{id}")
-    public Produto infoProdutoPorId(@PathVariable String id){
-        Optional<Produto> produto = produtoRepository.findById(id);
-        return produto.isPresent() ? produto.get() : null;
+    public ResponseEntity infoProdutoPorId(@PathVariable String id){
+        Optional<Produto> produto = Optional.ofNullable(produtoService.getProdutoPorId(id));
+        return produto.isPresent() ? ResponseEntity.status(HttpStatus.OK).body(produtoService.getProdutoPorId(id)) : null;
     }
 
     @DeleteMapping
