@@ -18,13 +18,11 @@ public class ProdutoService {
         this.produtoRepository = produtoRepository;
     }
 
-    public void salvarProduto(@RequestBody Produto produto){
-       try {
+    public void salvarProduto(Produto produto){
+
            String id = UUID.randomUUID().toString();
            produto.setId(id);
            produtoRepository.save(produto);
-       } catch (Exception ex) {
-       System.out.println("Erro: " + ex.getMessage() + " ao tentar salvar o produto.");
-       }
+
     }
 }
