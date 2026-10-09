@@ -4,9 +4,9 @@ import com.github.apiprodutosspring.model.Produto;
 import com.github.apiprodutosspring.repository.ProdutoRepository;
 import org.jspecify.annotations.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 import java.util.Optional;
@@ -45,5 +45,18 @@ public class ProdutoService {
         Produto produtoParaExcluir = produtoRepository.findById(id).get();
         produtoRepository.delete(produtoParaExcluir);
         return "Produto " + produtoParaExcluir.toString() + " removido com sucesso";
+    }
+
+    public void atualizarProduto(Produto produto){
+        Optional<Produto> produtoAtualizado = produtoRepository.findById(produto.getId());
+        if (produtoAtualizado.isPresent()) {
+            produtoAtualizado.get().setNome(produto.getNome());
+            produtoAtualizado.get().setDescricao(produto.getDescricao());
+            produtoAtualizado.get().setPreco(produto.getPreco());
+            produtoRepository.save(produtoAtualizado.get());
+            System.out.println("Produto: " +  produtoAtualizado.get().toString() + " foi atualizado com sucesso!");
+        }else {
+
+        }
     }
 }

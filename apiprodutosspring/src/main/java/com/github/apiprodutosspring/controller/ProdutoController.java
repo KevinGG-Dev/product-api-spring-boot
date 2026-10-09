@@ -43,6 +43,7 @@ public class ProdutoController {
 
     @GetMapping
     public List<Produto> listarProdutos(){
+        ResponseEntity.status(HttpStatus.OK).build();
         return produtoService.listarProdutos();
     }
 
@@ -58,10 +59,15 @@ public class ProdutoController {
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 
-    @PutMapping
-    public void atualizarProduto(@RequestParam String id, @RequestBody @NonNull Produto produto){
-        produto.setId(id);
-        produtoRepository.save(produto);
+    @PutMapping ("/{id}")
+    public void atualizarProduto(@PathVariable String id, @RequestBody @NonNull Produto produto){
+        if (id.equals(produto.getId())){
+            produtoService.atualizarProduto(produto);
+            ResponseEntity.status(HttpStatus.OK).body(produto.toString());
+        } else {
+            ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+
     }
 
 }
