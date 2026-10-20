@@ -1,6 +1,6 @@
 create table produto (
-    id int auto_increment (1, 1) not null,
-    nome varchar (30) not null,
-    descricao varchar (90),
-    preco double precision not null
+    id varchar (150) not null,
+    nome varchar (40) not null,
+    descricao varchar (150),
+    preco decimal (10, 2) not null
 );
