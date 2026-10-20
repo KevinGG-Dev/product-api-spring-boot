@@ -3,7 +3,12 @@ spring:
     name: apiprodutosspring
 
   datasource:
-      url: jdbc:h2:mem:produtos
-      username: sa
-      password: password
+    url: jdbc:mysql://localhost:3306/teste1
+    username: root
+    password: 052006
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
 
